@@ -7,8 +7,14 @@
           </p>
       </div>
       <div>
-          <input class="input-text" name="ListItem" />
-          <div id="button">Add</div>
+        <input class="input-text" name="ListItem" />
+
+        <button id="buttonAdd" @click="add">add</button>
+        <ol>
+        <li v-for="(item,index) in counter" :key="index">
+            <input type="checkbox" placeholder="0">
+        </li> 
+        </ol>
       </div>
       <br/>
       <ol></ol>
@@ -31,14 +37,19 @@
 
 
 <script>
-// import multiCounters from './components/multiCounters.vue'
-
-// export default {
-//   name: 'app',
-//   components: {
-//     multiCounters
-//   }
-// }
+export default {
+name:'App',
+data(){
+return {
+counter:[]
+}
+},
+methods: { 
+add(){
+this.counter.push({});
+} 
+}
+}
 </script>
 
 <style>
