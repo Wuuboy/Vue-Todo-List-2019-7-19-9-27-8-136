@@ -10,11 +10,16 @@
         <input v-model="inputValue" class="input-text" name="ListItem" />
 
         <button id="button" @click="add">add</button>
+      </div>
+      <div>
+  
         <ol>
         <li v-for="(item,index) in checkboxes" :key="index" v-bind:class="{ checked: item.isChecked }">
-            <input type="checkbox" @click="addStrike" v-model="item.isChecked" >
-            <span>{{item.checkBoxValue}}</span>
-            <!-- <span @dblclick="edit" ><strike>{{item.checkBoxValue}}</strike></span> -->
+            <input type="checkbox" v-model="item.isChecked" >
+            <span v-if="!editing" @dblclick="edit">{{item.checkBoxValue}}</span>
+            <input type="text" class="form-control" ref="input" v-if="editing"  v-model="item.checkBoxValue" @blur="save">
+            <!--  v-model="item.checkBoxValue" :value="item.updateValue"-->
+
         </li> 
         </ol>
       </div>
@@ -44,23 +49,33 @@ export default {
       return {
         inputValue:'',
         checkboxes:[],
-        checkboxesTemp:[]
+        checkboxesTemp:[],
+        editing: false
       }
     },
     methods: { 
       add(){
-        this.checkboxes.push({checkBoxValue:this.inputValue,isChecked:false});
+        this.checkboxes.push({checkBoxValue:this.inputValue,isChecked:false,updateValue:this.inputValue});
         this.checkboxesTemp = this.checkboxes.slice()
       },
       showAll(){
         this.checkboxes
       },
       showUnchecked(){
-      this.checkboxes = this.checkboxesTemp.filter(item => item.isChecked==true)
+        this.checkboxes = this.checkboxesTemp.filter(item => item.isChecked==true)
       }
       ,
       showChecked(){
         this.checkboxes = this.checkboxesTemp.filter(item => item.isChecked==false)
+      },
+      edit(){
+        this.editing = true;
+        this.$nextTick(function () {
+        this.$els.input.focus()
+        })
+      },
+      save() {
+        this.editing = false;
       }   
   }
 }
@@ -161,7 +176,8 @@ li:hover{
 
 .checked {
     color: #999;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
+    word-break: break-all;
 }
 
 input[type=checkbox].done-todo { 
