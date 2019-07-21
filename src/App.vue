@@ -7,12 +7,13 @@
           </p>
       </div>
       <div>
-        <input class="input-text" name="ListItem" />
+        <input v-model="inputValue" class="input-text" name="ListItem" />
 
-        <button id="buttonAdd" @click="add">add</button>
+        <button id="button" @click="add">add</button>
         <ol>
         <li v-for="(item,index) in counter" :key="index">
             <input type="checkbox" placeholder="0">
+            <span>{{inputValue}}</span>
         </li> 
         </ol>
       </div>
@@ -38,17 +39,18 @@
 
 <script>
 export default {
-name:'App',
-data(){
-return {
-counter:[]
-}
-},
-methods: { 
-add(){
-this.counter.push({});
-} 
-}
+  name:'App',
+    data(){
+      return {
+        inputValue:'',
+        counter:[]
+      }
+    },
+    methods: { 
+      add(){
+        this.counter.push({});
+      } 
+  }
 }
 </script>
 
