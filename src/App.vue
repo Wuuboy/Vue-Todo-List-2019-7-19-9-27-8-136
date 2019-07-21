@@ -11,9 +11,10 @@
 
         <button id="button" @click="add">add</button>
         <ol>
-        <li v-for="(item,index) in checkboxes" :key="index">
-            <input type="checkbox" placeholder="0" v-model="item.isChecked">
+        <li v-for="(item,index) in checkboxes" :key="index" v-bind:class="{ checked: item.isChecked }">
+            <input type="checkbox" @click="addStrike" v-model="item.isChecked" >
             <span>{{item.checkBoxValue}}</span>
+            <!-- <span @dblclick="edit" ><strike>{{item.checkBoxValue}}</strike></span> -->
         </li> 
         </ol>
       </div>
@@ -42,25 +43,25 @@ export default {
     data(){
       return {
         inputValue:'',
-        checkboxes:[]
+        checkboxes:[],
+        checkboxesTemp:[]
       }
     },
     methods: { 
       add(){
         this.checkboxes.push({checkBoxValue:this.inputValue,isChecked:false});
-        this.checkboxesSlice=this.checkboxes.slice();
-        this.inputValue =''
+        this.checkboxesTemp = this.checkboxes.slice()
       },
       showAll(){
         this.checkboxes
       },
       showUnchecked(){
-        this.checkboxes = this.checkboxesSlice.filter(item => item.isChecked==true)
+      this.checkboxes = this.checkboxesTemp.filter(item => item.isChecked==true)
       }
       ,
       showChecked(){
-        this.checkboxes = this.checkboxesSlice.filter(item => item.isChecked==false)
-      }
+        this.checkboxes = this.checkboxesTemp.filter(item => item.isChecked==false)
+      }   
   }
 }
 </script>
