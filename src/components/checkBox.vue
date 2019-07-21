@@ -1,26 +1,18 @@
 <template>
-    <div id="app">     
-        <button value="-" @click="reduce">-</button>
-            <span id = "showValue">{{count}}</span>      
-        <button value="+" @click="add">+</button>    
-    </div>
+<div>
+   <ol>
+        <li v-for="(item,index) in checkBoxes" :key="index" >
+            <input type="checkbox" placeholder="0" v-model="item.isChecked">
+            <span>{{item.checkBoxValue}}</span>
+        </li> 
+    </ol>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'Counter',
-  data(){
-     return{count:0}   
-  },        
-  methods:{          
-      reduce:function(){this.count--},          
-      add:function(){this.count++}        
-  },
-  watch:{
-    count:function(newValue, oldvalue){
-        this.$emit('changeSum',newValue-oldvalue)
-    }
-  }     
+  name: 'CheckBox',
+  props:['checkBoxes']
 }
 </script>
 

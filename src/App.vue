@@ -11,24 +11,23 @@
 
         <button id="button" @click="add">add</button>
         <ol>
-        <li v-for="(item,index) in counter" :key="index">
-            <input type="checkbox" placeholder="0">
-            <span>{{inputValue}}</span>
+        <li v-for="(item,index) in checkboxes" :key="index">
+            <input type="checkbox" placeholder="0" v-model="item.isChecked">
+            <span>{{item.checkBoxValue}}</span>
         </li> 
         </ol>
       </div>
       <br/>
-      <ol></ol>
       <div>
           <ul id="filters">
               <li>
-                  <a href="#" data-filter="all">ALL</a>
+                  <a href="#" data-filter="all" @click="showAll">ALL</a>
               </li>
               <li>
-                  <a href="#" data-filter="active">Active</a>
+                  <a href="#" data-filter="active" @click="showUnchecked">Active</a>
               </li>
               <li>
-                  <a href="#" data-filter="complete">Complete</a>
+                  <a href="#" data-filter="complete" @click="showChecked">Complete</a>
               </li>
           </ul>
 
@@ -43,13 +42,25 @@ export default {
     data(){
       return {
         inputValue:'',
-        counter:[]
+        checkboxes:[]
       }
     },
     methods: { 
       add(){
-        this.counter.push({});
-      } 
+        this.checkboxes.push({checkBoxValue:this.inputValue,isChecked:false});
+        this.checkboxesSlice=this.checkboxes.slice();
+        this.inputValue =''
+      },
+      showAll(){
+        this.checkboxes
+      },
+      showUnchecked(){
+        this.checkboxes = this.checkboxesSlice.filter(item => item.isChecked==true)
+      }
+      ,
+      showChecked(){
+        this.checkboxes = this.checkboxesSlice.filter(item => item.isChecked==false)
+      }
   }
 }
 </script>
