@@ -16,10 +16,8 @@
         <ol>
         <li v-for="(item,index) in checkboxes" :key="index" v-bind:class="{ checked: item.isChecked }">
             <input type="checkbox" v-model="item.isChecked" >
-            <span v-if="!editing" @dblclick="edit">{{item.checkBoxValue}}</span>
+            <span v-if="!editing" @dblclick="edit(this)">{{item.checkBoxValue}}</span>
             <input type="text" class="form-control" ref="input" v-if="editing"  v-model="item.checkBoxValue" @blur="save">
-            <!--  v-model="item.checkBoxValue" :value="item.updateValue"-->
-
         </li> 
         </ol>
       </div>
@@ -82,106 +80,5 @@ export default {
 </script>
 
 <style>
-/*basic style*/
-
-body {
-    font: normal normal 13px/16px "Open Sans", sans-serif;
-    background: #ccc;
-}
-
-.container{
-    padding: 20px;
-    width: 400px;
-    margin: 0 auto;
-    margin-top: 40px;
-    background: white;
-    border-radius: 5px;
-}
-
-.input-text{
-    width: 70%;
-}
-
-input{
-    padding: 4px 15px 4px 0;
-    
-}
-
-#button{
-display: inline-block;
-background-color:#fc999b;
-color:#ffffff;
-border-radius: 5px;
-text-align:center;
-margin-top:2px;
-padding: 5px 15px;
-}
-
-#button:hover{
-cursor: pointer;
-opacity: .8;
-}
-
-ol {
-    padding-left: 20px;
-}
-
-ol li {
-    padding: 5px;color:#000;
-}
-
-ol li span{
-    word-break:break-all; 
-    width: 70%;
-}
-
-ol li:nth-child(even){
-    background: #f4ecec;
-}
-
-li:hover{
-  cursor: pointer;
- }
-
- #filters{
-     text-align: center;
-     margin-bottom: -10px;
-     margin-top: 40px;
- 
- }
-
-#filters li a {
-    color: #fc999b;
-    margin: 3px;
-    padding: 3px 7px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-radius: 3px;
-}
-
-#filters li a.selected {
-    border-color: rgba(175, 47, 47, 0.2);
-}
-#filters li a.selected, #filters li a:hover {
-    border-color: rgba(175, 47, 47, 0.1);
-}
-
-#filters li {
-	display: inline;
-	margin: 0 0 5px 0;
-	padding: 8px;
-	list-style: none;
-    outline: none;
- }
-
-.checked {
-    color: #999;
-    /* text-decoration: line-through; */
-    word-break: break-all;
-}
-
-input[type=checkbox].done-todo { 
-	
-    margin: 5px 5px 2px 0; 
-}
+ @import "assets/css/toDoList.css";
 </style>
