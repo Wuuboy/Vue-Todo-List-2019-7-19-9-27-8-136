@@ -57,7 +57,7 @@ export default {
         this.checkboxesTemp = this.checkboxes.slice()
       },
       showAll(){
-        this.checkboxes
+        this.checkboxes= this.checkboxesTemp
       },
       showUnchecked(){
         this.checkboxes = this.checkboxesTemp.filter(item => item.isChecked==true)
