@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="container">
-            <h1> params.userName：{{ this.$route.query.userName}}</h1>
+           
             <Header/>
             <List/>
             <Button/>

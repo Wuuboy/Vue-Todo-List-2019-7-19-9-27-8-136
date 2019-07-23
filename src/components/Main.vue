@@ -2,7 +2,7 @@
     <div>
         <input id="input" v-model="username" placeholder="name"/>
         <!-- <router-link to="/ToDoList">Go to the toDoList</router-link> -->
-        <router-link :to="{path: '/ToDoList',query:{'userName':this.username}}">Go to the toDoList</router-link>
+        <router-link :to="{path: '/Home',query:{'userName':this.username}}">Go to the toDoList</router-link>
     </div>
 </template>
 
