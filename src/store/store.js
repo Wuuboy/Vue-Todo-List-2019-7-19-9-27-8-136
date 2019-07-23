@@ -21,7 +21,6 @@ const actions = {
       console.log(error)
     })
   },
-
   add:({commit},item) =>{
     axios.post('http://localhost:3001/todos',item)
         .then(function (response) {
@@ -40,11 +39,20 @@ const actions = {
         console.log(error);
         })
   },
+  deleteItem:({commit},item) =>{
+    axios.delete('http://localhost:3001/todos'+item.id)
+        .then(function () {
+          commit('deleteItem',item.index)
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+  }
 }
 // 更新状态
 const mutations = {
   add (state,item) {
-    state.checkboxes.push(item);
+  state.checkboxes.push(item);
 },
 addList (state,items) {
   state.checkboxes.push(...items);
@@ -58,6 +66,9 @@ show (state, condition) {
 },
 addUserName(state,username){
   state.username = username;
+},
+deleteItem(state,index){
+  state.checkboxes.splice(index, 1)
 }
 }
 // 获取状态信息

@@ -7,14 +7,14 @@
                         <span v-if="!item.isEdited">{{item.content}}</span>
                         <input v-model="item.content" @blur="save(item,index)" v-else/>
                 </span>
-                <button @click="remove({index: index, id: id})">Remove</button>
+                <button @click="remove(item,index)">Remove</button>
             </li>
         </ol>
     </div>
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
     export default {
         name: 'List',
         data: function () {
@@ -22,6 +22,10 @@
             }
         },
         methods: {
+            remove:function(item){
+                this.$store.dispatch('deleteItem',item);
+            },
+            
             edit: function (item) {
                 item.isEdited = true;
                 // this.$store.commit('updateItem',{item:item});
