@@ -7,6 +7,7 @@ Vue.use(Vuex)
 const state = {
   checkboxes: [],
   condition: 'ALL',
+  username:''
 }
 // 然后给 actions 注册事件处理函数，当这个函数被触发时，将状态提交到 mutaions中处理
 const actions = {
@@ -21,7 +22,7 @@ const actions = {
     })
   },
 
-  add:({commit,state},item) =>{
+  add:({commit},item) =>{
     axios.post('http://localhost:3001/todos',item)
         .then(function (response) {
           commit('addList',[response.data])
@@ -30,7 +31,7 @@ const actions = {
         console.log(error);
         })
   },
-  updateItem:({commit,state},item) =>{
+  updateItem:({commit},item) =>{
     axios.put('http://localhost:3001/todos'+item.id,item)
         .then(function (response) {
           commit('updateItem',[response.data])
@@ -54,6 +55,9 @@ updateItem (state,item) {
 },
 show (state, condition) {
   state.condition = condition;
+},
+addUserName(state,username){
+  state.username = username;
 }
 }
 // 获取状态信息

@@ -11,7 +11,7 @@ import Home from './components/Home.vue'
 const routes = [
   {path:'/',component:Main},
   // {path:'/ToDoList',component:ToDoList}
-  {path:'/Home',component:Home}
+  {name:'Home',path:'/Home',component:Home}
 ]
 
 const router  = new VueRouter({

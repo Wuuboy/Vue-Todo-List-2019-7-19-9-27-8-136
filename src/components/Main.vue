@@ -1,8 +1,8 @@
 <template>
     <div>
-        <input id="input" v-model="username" placeholder="name"/>
-        <!-- <router-link to="/ToDoList">Go to the toDoList</router-link> -->
-        <router-link :to="{path: '/Home',query:{'userName':this.username}}">Go to the toDoList</router-link>
+        <input id="input" v-model="username" placeholder="name" @on-enter="addUserName"/>
+        <Button type="primary" @click="addUserName">start use</Button>
+        <!-- <router-link :to="{path: '/Home',query:{'username':this.username}}" @click="addUserName">Go to the Home</router-link> -->
     </div>
 </template>
 
@@ -12,6 +12,12 @@ export default{
        return{
            username:''
        } 
+    },
+    methods:{
+        addUserName(){
+            this.$router.push({name: 'Home', params: {username: this.username}});
+            this.$store.commit('addUserName', this.username);
+        }
     }
 }
 </script>
