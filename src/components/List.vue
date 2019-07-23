@@ -28,7 +28,7 @@
            
             save: function (item) {
                  this.$store.dispatch('updateItem',item);
-            //     item.isEdited = false; 
+                item.isEdited = false; 
             //     axios
             //     .put('http://localhost:3001/todos/'+item.id,{item:item})
             //     .then(response => {
