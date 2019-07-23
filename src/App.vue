@@ -1,14 +1,10 @@
 <template>
   <div id="app">
-    <ToDoList msg="Welcome to Your Vue.js App"/>
+    <router-view/>
   </div>
 </template>
 <script>
-import ToDoList from './components/ToDoList.vue'
 export default {
-  name: 'app',
-  components: {
-    ToDoList
-  }
+  
 }
 </script>

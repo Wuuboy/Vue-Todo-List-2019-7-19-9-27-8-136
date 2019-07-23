@@ -13,11 +13,12 @@
 </template>
 
 <script>
+// import axios from 'axios'
+// import { constants } from 'crypto';
     export default {
         name: 'List',
         data: function () {
             return {
-                condition: "all",
             }
         },
         methods: {
@@ -25,9 +26,19 @@
                 item.isEdited = true;
                 this.$store.commit('updateItem',{item:item});
             },
+           
             save: function (item) {
-                item.isEdited = false;
-                this.$store.commit('updateItem',{item:item});
+                 this.$store.dispatch('updateItem',item);
+            //     item.isEdited = false; 
+            //     axios
+            //     .put('http://localhost:3001/todos/'+item.id,{item:item})
+            //     .then(response => {
+            //         this.$store.commit('updateItem',[response.data])
+            //         })
+            //     .catch(function (error) { // 请求失败处理
+            //         console.log(error)
+            //     })
+                // this.$store.commit('updateItem',{item:item});
             }
         },
         computed: {
@@ -40,7 +51,18 @@
                     return this.$store.state.checkboxes.filter(item=>item.isChecked===true)
                 }
             }
-        }
+        },
+          mounted () {
+            // axios
+            //     .get('http://localhost:3001/todos')
+            //     .then(response => {
+            //         this.$store.commit('addList',response.data)
+            //         })
+            //     .catch(function (error) { // 请求失败处理
+            //         console.log(error)
+            //     })
+            this.$store.dispatch('addList')
+    }
     }
 </script>
 <style>

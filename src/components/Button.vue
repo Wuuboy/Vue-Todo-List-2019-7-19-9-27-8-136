@@ -15,6 +15,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
     export default {
         name: 'Button',
         data: function () {
@@ -28,12 +29,5 @@
     }
 </script>
 
-
-
 <style>
-
-    /*@import "assets/css/style.css";*/
-
-
-
 </style>

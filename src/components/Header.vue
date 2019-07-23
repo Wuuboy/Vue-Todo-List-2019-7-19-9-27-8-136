@@ -12,6 +12,7 @@
         </div>
 </template>
 <script>
+import axios from 'axios'
     export default {
         name: 'Header',
         data: function () {
@@ -22,10 +23,28 @@
         methods: {
             add: function () {
                 if (this.item.content) {
-                    this.$store.commit('add',{id:this.$store.state.checkboxes.length+1,
+                   this.$store.dispatch('add', {id:this.$store.state.checkboxes.length+1,
                                                 content:this.item.content,
                                                 isChecked:false,
-                                                isEdited:false});
+                                                isEdited:false})
+                    //  axios.post('http://localhost:3001/todos',  
+                    //                             this.$store.commit('add',{id:this.$store.state.checkboxes.length+1,
+                    //                             content:this.item.content,
+                    //                             isChecked:false,
+                    //                             isEdited:false})
+                    // )
+                    // .then(function (response) {
+                    //     console.log(response);
+                    // })
+                    // .catch(function (error) {
+                    //     console.log(error);
+                    // });
+
+                    // this.$store.commit('add',{id:this.$store.state.checkboxes.length+1,
+                    //                             content:this.item.content,
+                    //                             isChecked:false,
+                    //                             isEdited:false});
+
                     this.item = {};
                 }
             }
