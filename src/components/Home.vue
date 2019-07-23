@@ -1,10 +1,23 @@
 <template>
-    <div>
-        <input type = 'button' value='返回' @click="back"/>
+    <div style="height: 100%;background: white;">
+        <div style="float: left;">
+        <input id="button" type = 'button' value='返回' @click="back"/>
+        </div>
+        <div style="margin-left: 1107px;">
         <!-- <h1> params.username：{{ this.$route.query.username}}</h1> -->
-        <h1> params.username：{{ this.$store.state.username}}</h1>
+        <h1> {{ this.$store.state.username}}你好！</h1>
+        </div>
+       
+        <div style="float: left;margin-top: 24px;">
+        <ul class="ulClass">
+            <li class="liClass"><a href="#home">toDoList</a></li>
+            <li class="liClass"><a href="#news">我的<Me/></a></li>
+        </ul>
+        </div>
+
+         <div>
         <ToDoList/>
-        <Me/>
+        </div>
     </div>
 </template>
 <script>
@@ -23,4 +36,26 @@ export default {
     }
 }
 </script>
+<style>
+.ulClass {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+ 
+.liClass a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+ 
+.liClass a:hover {
+    background-color: #555;
+    color: white;
+}
+</style>
+
 
