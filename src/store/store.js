@@ -40,7 +40,7 @@ const actions = {
         })
   },
   deleteItem:({commit},item) =>{
-    axios.delete('http://localhost:3001/todos'+item.id)
+    axios.delete('http://localhost:3001/todos/'+item.id)
         .then(function () {
           commit('deleteItem',item.index)
         })

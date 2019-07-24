@@ -67,7 +67,9 @@ import axios from 'axios'
             //     .catch(function (error) { // 请求失败处理
             //         console.log(error)
             //     })
-            this.$store.dispatch('addList')
+            if (this.$store.state.checkboxes.length === 0) {
+                this.$store.dispatch('addList')
+            }
     }
     }
 </script>
