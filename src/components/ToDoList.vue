@@ -1,12 +1,10 @@
 <template>
     <div id="app">
-        <div class="container" style=" margin-left: 500px;">
-           
+        <div style="    margin-left: 200px;">
             <Header/>
             <List/>
             <Button/>
             <!-- <test/> -->
-
         </div>
     </div>
 </template>

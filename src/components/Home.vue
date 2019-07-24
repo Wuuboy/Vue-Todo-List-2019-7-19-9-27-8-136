@@ -15,6 +15,7 @@
             <li class="liClass"><router-link to="/Me">我的</router-link></li>
         </ul>
         </div>
+
          <div>
         <ToDoList/>
         </div>
@@ -28,11 +29,23 @@ export default {
     methods:{
         back:function(){
            if (confirm("确认返回上一个界面？")){
-            window.history.length > 1
-            ? this.$router.go(-1)
-            : this.$router.push('/')
+               this.$router.push('/')
+            // window.history.length > 1
+            // ? this.$router.go(-1)
+            // : this.$router.push('/')
            }
         }
+    },
+    beforeRouteLeave (to,from,next) {
+        if(to.path=='/'){
+            const answer = window.confirm('确认返回上一个界面？')
+            if (answer) {
+            next()
+            } else{
+                next(false)
+        }
+        }
+      
     }
 }
 </script>

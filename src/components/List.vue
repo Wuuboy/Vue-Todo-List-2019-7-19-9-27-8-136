@@ -7,7 +7,7 @@
                         <span v-if="!item.isEdited">{{item.content}}</span>
                         <input v-model="item.content" @blur="save(item,index)" v-else/>
                 </span>
-                <button @click="remove(item,index)">Remove</button>
+                <button style="float:right;margin-right:700px" @click="remove(item,index)">Remove</button>
             </li>
         </ol>
     </div>
